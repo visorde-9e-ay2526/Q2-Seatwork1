@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Com Arts Club | Member Directory</title>
+
+    <link rel="stylesheet"
+        href="https://pyscript.net/releases/2026.7.2/core.css"/>
+    <script type="module"
+        src="https://pyscript.net/releases/2026.7.2/core.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --navy: #073477;
+            --blue: #0755A4;
+            --cyan: #35D4F2;
+            --yellow: #FFD447;
+            --orange: #FF9B35;
+            --cream: #FFF9E9;
+            --white: #FFFFFF;
+            --text: #19304D;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+        }
+
+        /* Header */
+        header {
+            background: var(--navy);
+            color: var(--white);
+            padding: 18px 8%;
+            border-bottom: 5px solid var(--cyan);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        header img {
+            width: 85px;
+            height: 85px;
+            object-fit: contain;
+        }
+
+        .brand h1 {
+            font-size: 22px;
+            margin: 0;
+            font-weight: 800;
+        }
+
+        .brand p {
+            margin: 4px 0 0;
+            color: var(--cyan);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        /* Main content */
+        main {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .welcome {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--navy);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .welcome h2 {
+            color: var(--navy);
+            font-size: clamp(28px, 5vw, 40px);
+            margin: 15px 0 8px;
+        }
+
+        .welcome h2 span {
+            color: #E77C19;
+        }
+
+        .welcome p {
+            color: #64748B;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        /* Search card */
+        .search-card {
+            background: var(--white);
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #F1E5C8;
+            border-top: 6px solid var(--orange);
+            box-shadow: 0 10px 30px #07347712;
+        }
+
+        .search-card h3 {
+            margin: 0 0 8px;
+            color: var(--navy);
+            font-size: 20px;
+        }
+
+        .search-card .description {
+            margin: 0 0 22px;
+            color: #718096;
+            font-size: 13px;
+        }
+
+        label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 9px;
+            color: var(--navy);
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 14px 15px;
+            border: 2px solid #DCE5EF;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--blue);
+        }
+
+        input[type="button"] {
+            width: 100%;
+            margin-top: 16px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: var(--navy);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        input[type="button"]:hover {
+            background: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        /* Results */
+        #result {
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+
+        .info-note {
+            max-width: 650px;
+            margin: 22px auto 0;
+            padding: 15px 18px;
+            background: #FFF0CE;
+            border-left: 4px solid var(--yellow);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #76521A;
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 55px;
+            padding: 22px 15px;
+            background: var(--navy);
+            color: var(--white);
+            text-align: center;
+            font-size: 12px;
+        }
+
+        footer span {
+            color: var(--cyan);
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px 5%;
+                gap: 12px;
+            }
+
+            header img {
+                width: 65px;
+                height: 65px;
+            }
+
+            .brand h1 {
+                font-size: 16px;
+            }
+
+            .brand p {
+                font-size: 9px;
+                letter-spacing: 2px;
+            }
+
+            main {
+                margin-top: 30px;
+            }
+
+            .search-card {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img src="com-arts-logo-png.png"
+             alt="Communication Arts Club Logo">
+
+        <div class="brand">
+            <h1>Communication Arts Club</h1>
+            <p>CREATE. EXPRESS. COMMUNICATE.</p>
+        </div>
+    </header>
+
+    <main>
+        <section class="welcome">
+            <span class="tag">MEMBER PORTAL</span>
+
+            <h2>Are you a <span>member?</span></h2>
+
+            <p>
+                Welcome to the Communication Arts Club Directory!
+                Verify your membership or qualifying exam status below.
+            </p>
+        </section>
+
+        <section class="search-card">
+            <h3>Member Verification</h3>
+
+            <p class="description">
+                Enter your full name to check your membership status.
+            </p>
+
+            <form onsubmit="return false;">
+                <label for="fname">Full Name</label>
+
+                <input
+                    type="text"
+                    id="fname"
+                    placeholder="Enter your complete name"
+                    autocomplete="name"
+                >
+
+                <input
+                    type="button"
+                    py-mouseover="view_user"
+                    value="Search Membership"
+                >
+            </form>
+
+            <div id="result" aria-live="polite"></div>
+        </section>
+
+        <div class="info-note">
+            <strong>PLEASE NOTE:</strong> Enter your name as registered
+            with the club. If your record cannot be found, contact
+            a Communication Arts Club officer for assistance.
+        </div>
+    </main>
+
+    <footer>
+        <span>COMMUNICATION ARTS CLUB</span>
+        <p>Creativity starts with communication.</p>
+    </footer>
+
+    <py-script src="main.py"></py-script>
+
+</body>
+</html>
